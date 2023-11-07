@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 import static lotto.LottoConstant.MIN_NUMBER;
@@ -17,7 +18,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = Collections.unmodifiableList(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -25,5 +26,5 @@ public class Lotto {
             throw new IllegalArgumentException(INVALID_BONUS_NUMBER_COUNT.getMessage());
         }
     }
-    
+
 }
