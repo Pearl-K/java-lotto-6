@@ -14,6 +14,7 @@ public class Lotto {
         this.numbers = Collections.unmodifiableList(numbers);
     }
 
+    // validate 기능 부족함, min~max 범위와 중복 제거도 생각해야함
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException(INVALID_BONUS_NUMBER_COUNT.getMessage());
