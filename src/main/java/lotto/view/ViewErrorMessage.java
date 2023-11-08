@@ -1,11 +1,12 @@
 package lotto.view;
 
-public enum ViewConstant {
+public enum ViewErrorMessage {
     INPUT_LOTTO_PURCHASE_MONEY_MESSAGE("구입금액을 입력해 주세요."),
     INPUT_LOTTO_WINNING_NUMBERS_MESSAGE("당첨 번호를 입력해 주세요."),
     INPUT_BONUS_NUMBER_MESSAGE("보너스 번호를 입력해 주세요."),
     SEPARATOR(","),
     ERROR_MESSAGE_HEADER("[ERROR] "),
+    ERROR_INVALID_PRICE("구매 금액은 천 원으로 나누어 떨어져야 합니다"),
     ERROR_INPUT_IS_NOT_NUMBER("숫자만 입력 가능합니다."),
     ERROR_INVALID_INPUT("번호를 형식에 맞게 입력해 주세요."),
 
@@ -19,7 +20,7 @@ public enum ViewConstant {
 
     private final String message;
 
-    ViewConstant(String string) {
+    ViewErrorMessage(String string) {
         this.message = string;
     }
 
