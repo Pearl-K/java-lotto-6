@@ -5,13 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.view.ViewConstant.INPUT_LOTTO_PURCHASE_MONEY_MESSAGE;
-import static lotto.view.ViewConstant.INPUT_LOTTO_WINNING_NUMBERS_MESSAGE;
-import static lotto.view.ViewConstant.INPUT_BONUS_NUMBER_MESSAGE;
-import static lotto.view.ViewConstant.SEPARATOR;
-import static lotto.view.ViewConstant.ERROR_MESSAGE_HEADER;
-import static lotto.view.ViewConstant.ERROR_INPUT_IS_NOT_NUMBER;
-import static lotto.view.ViewConstant.ERROR_INVALID_INPUT;
+import static lotto.domain.LottoConstant.LOTTO_PRICE;
+import static lotto.view.ViewErrorMessage.INPUT_LOTTO_PURCHASE_MONEY_MESSAGE;
+import static lotto.view.ViewErrorMessage.INPUT_LOTTO_WINNING_NUMBERS_MESSAGE;
+import static lotto.view.ViewErrorMessage.INPUT_BONUS_NUMBER_MESSAGE;
+import static lotto.view.ViewErrorMessage.SEPARATOR;
+import static lotto.view.ViewErrorMessage.ERROR_MESSAGE_HEADER;
+import static lotto.view.ViewErrorMessage.ERROR_INVALID_PRICE;
+import static lotto.view.ViewErrorMessage.ERROR_INPUT_IS_NOT_NUMBER;
+import static lotto.view.ViewErrorMessage.ERROR_INVALID_INPUT;
 
 
 public class InputView {
@@ -21,13 +23,17 @@ public class InputView {
 
     public static int inputLottoPurchaseMoney() {
         System.out.println(INPUT_LOTTO_PURCHASE_MONEY_MESSAGE);
-        return getUserNumberInput();
+        int purchaseMoney = getUserNumberInput();
+        if (purchaseMoney % LOTTO_PRICE.getValue() != 0) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_HEADER.getMessage() + ERROR_INVALID_PRICE.getMessage() );
+        }
+        return purchaseMoney;
     }
 
     public static List<Integer> inputLottoWinningNumber() {
         try {
             System.out.println(INPUT_LOTTO_WINNING_NUMBERS_MESSAGE);
-            return getUserNumbersInput();
+            return getUserNumberListInput();
         } catch (RuntimeException runtimeException) {
             throw new IllegalArgumentException(ERROR_MESSAGE_HEADER.getMessage() + ERROR_INVALID_INPUT.getMessage());
         }
@@ -44,7 +50,7 @@ public class InputView {
         return Integer.parseInt(userInput);
     }
 
-    private static List<Integer> getUserNumbersInput() {
+    private static List<Integer> getUserNumberListInput() {
         String userInput = Console.readLine();
         List<String> winningNumber = Arrays.asList(userInput.split(SEPARATOR.getMessage()));
 
