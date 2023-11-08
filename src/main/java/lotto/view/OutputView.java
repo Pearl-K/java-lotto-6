@@ -6,6 +6,7 @@ import java.util.List;
 
 public class OutputView {
     public static void printPurchaseResult(int numberOfLottoPurchased) {
+        System.out.println();
         System.out.println(String.format(NUMBER_OF_LOTTO_PURCHASED_MESSAGE.getMessage(), numberOfLottoPurchased));
     }
 

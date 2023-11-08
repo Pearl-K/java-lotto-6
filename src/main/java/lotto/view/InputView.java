@@ -34,6 +34,7 @@ public class InputView {
 
     public static List<Integer> inputLottoWinningNumber() {
         try {
+            System.out.println();
             System.out.println(INPUT_LOTTO_WINNING_NUMBERS_MESSAGE.getMessage());
             List<Integer> winners = getUserNumberListInput();
             int bonusNumber = inputBonusNumber();
@@ -50,6 +51,7 @@ public class InputView {
     }
 
     public static int inputBonusNumber() {
+        System.out.println();
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE.getMessage());
         return getUserNumberInput();
     }
