@@ -3,6 +3,7 @@ package lotto.controller;
 import java.util.List;
 import lotto.domain.LottoRandomNumberGenerator;
 import lotto.domain.LottoTicketCount;
+import lotto.domain.WinningResult;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -21,6 +22,8 @@ public class LottoGameController {
 
         List<Integer> lottoWinningNumbers = InputView.inputLottoWinningNumber();
 
+        WinningResult result = new WinningResult();
+        result.calculateWinningResult(randomLottoNumbers, lottoWinningNumbers, numberOfLottoTickets);
 
     }
 }
