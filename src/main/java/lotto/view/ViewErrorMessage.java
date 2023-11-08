@@ -9,7 +9,9 @@ public enum ViewErrorMessage {
     ERROR_INVALID_PRICE("구매 금액은 천 원으로 나누어 떨어져야 합니다"),
     ERROR_INPUT_IS_NOT_NUMBER("숫자만 입력 가능합니다."),
     ERROR_INVALID_INPUT("번호를 형식에 맞게 입력해 주세요."),
-
+    ERROR_INVALID_SIZE("숫자 개수가 맞지 않습니다."),
+    ERROR_INVALID_RANGE("당첨 번호는 1에서 45 사이의 정수 값이어야 합니다."),
+    ERROR_DUPLICATED_NUMBER("중복되는 당첨 번호는 사용할 수 없습니다."),
     NUMBER_OF_LOTTO_PURCHASED_MESSAGE("%d개를 구매했습니다."),
     STATISTICS_FOREWORD_MESSAGE("당첨통계"),
     DOUBLED_DASH("--"),
