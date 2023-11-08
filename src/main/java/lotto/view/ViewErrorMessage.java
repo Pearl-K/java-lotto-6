@@ -6,7 +6,7 @@ public enum ViewErrorMessage {
     INPUT_BONUS_NUMBER_MESSAGE("보너스 번호를 입력해 주세요."),
     SEPARATOR(","),
     ERROR_MESSAGE_HEADER("[ERROR] "),
-    ERROR_INVALID_PRICE("구매 금액은 천 원으로 나누어 떨어져야 합니다"),
+    ERROR_INVALID_PRICE("구매 금액은 천원 이상이고, 천원으로 나누어 떨어져야 합니다"),
     ERROR_INPUT_IS_NOT_NUMBER("숫자만 입력 가능합니다."),
     ERROR_INVALID_INPUT("번호를 형식에 맞게 입력해 주세요."),
     ERROR_INVALID_SIZE("숫자 개수가 맞지 않습니다."),
