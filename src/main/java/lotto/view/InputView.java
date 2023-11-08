@@ -37,16 +37,15 @@ public class InputView {
             System.out.println();
             System.out.println(INPUT_LOTTO_WINNING_NUMBERS_MESSAGE.getMessage());
             List<Integer> winners = getUserNumberListInput();
-            int bonusNumber = inputBonusNumber();
+            validateWinners(winners);
 
-            validateLottoSize(winners);
-            validateNumberRange(winners, bonusNumber);
-            validateDuplicatedNumber(winners, bonusNumber);
+            int bonusNumber = inputBonusNumber();
+            validateBonusNumber(winners, bonusNumber);
 
             winners.add(bonusNumber);
             return winners;
-        } catch (RuntimeException runtimeException) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_HEADER.getMessage() + ERROR_INVALID_INPUT.getMessage());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
@@ -71,6 +70,18 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
+    private static void validateWinners(List<Integer> winners) {
+        validateLottoSize(winners);
+        validateWinnersRange(winners);
+        hasDuplicates(winners);
+    }
+
+    private static void validateBonusNumber(List<Integer> winners, int bonusNumber) {
+        validateNumberRange(bonusNumber);
+        validateDuplicatedNumber(winners, bonusNumber);
+
+    }
+
     private static void validateUserNumberInput(String userInput) {
         try {
             Integer.parseInt(userInput);
@@ -85,25 +96,29 @@ public class InputView {
         }
     }
 
-    private static void validateNumberRange(List<Integer> winners, int bonusNumber) {
+    private static void validateWinnersRange(List<Integer> winners) {
         winners.forEach(number -> {
             if (number < MIN_NUMBER.getValue() || number > MAX_NUMBER.getValue()) {
                 throw new IllegalArgumentException(ERROR_MESSAGE_HEADER.getMessage() + ERROR_INVALID_RANGE.getMessage());
             }
         });
+    }
 
+    private static void validateNumberRange(int bonusNumber) {
         if (bonusNumber < MIN_NUMBER.getValue() || bonusNumber > MAX_NUMBER.getValue()) {
             throw new IllegalArgumentException(ERROR_MESSAGE_HEADER.getMessage() + ERROR_INVALID_RANGE.getMessage());
         }
     }
 
     private static void validateDuplicatedNumber(List<Integer> winners, int bonusNumber) {
-        if (winners.contains(bonusNumber) || hasDuplicates(winners)) {
+        if (winners.contains(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_HEADER.getMessage() + ERROR_DUPLICATED_NUMBER.getMessage());
         }
     }
 
-    private static boolean hasDuplicates(List<Integer> numbers) {
-        return numbers.size() != numbers.stream().distinct().count();
+    private static void hasDuplicates(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()){
+            throw new IllegalArgumentException(ERROR_MESSAGE_HEADER.getMessage() + ERROR_DUPLICATED_NUMBER.getMessage());
+        }
     }
 }
