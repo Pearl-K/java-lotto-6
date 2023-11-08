@@ -4,6 +4,7 @@ import java.util.List;
 import lotto.domain.LottoRandomNumberGenerator;
 import lotto.domain.LottoTicketCount;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoGameController {
 
@@ -15,15 +16,11 @@ public class LottoGameController {
 
         LottoRandomNumberGenerator randomLottos = new LottoRandomNumberGenerator();
         List<List<Integer>> randomLottoNumbers = randomLottos.generateRandomNumbers(numberOfLottoTickets);
+        OutputView.printPurchaseResult(numberOfLottoTickets);
+        OutputView.printLottoNumbers(randomLottoNumbers);
 
-        InputView.inputLottoWinningNumber();
+        List<Integer> lottoWinningNumbers = InputView.inputLottoWinningNumber();
 
-        int bonusNumber = InputView.inputBonusNumber();
 
-    }
-
-    public static void main(String[] args) {
-        LottoGameController controller = new LottoGameController();
-        controller.run();
     }
 }
