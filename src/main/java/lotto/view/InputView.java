@@ -23,11 +23,7 @@ public class InputView {
 
     public static int inputLottoPurchaseMoney() {
         System.out.println(INPUT_LOTTO_PURCHASE_MONEY_MESSAGE);
-        int purchaseMoney = getUserNumberInput();
-        if (purchaseMoney % LOTTO_PRICE.getValue() != 0) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_HEADER.getMessage() + ERROR_INVALID_PRICE.getMessage() );
-        }
-        return purchaseMoney;
+        return getUserNumberInput();
     }
 
     public static List<Integer> inputLottoWinningNumber() {
