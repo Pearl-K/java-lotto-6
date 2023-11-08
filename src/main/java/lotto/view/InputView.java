@@ -28,13 +28,13 @@ public class InputView {
     }
 
     public static int inputLottoPurchaseMoney() {
-        System.out.println(INPUT_LOTTO_PURCHASE_MONEY_MESSAGE);
+        System.out.println(INPUT_LOTTO_PURCHASE_MONEY_MESSAGE.getMessage());
         return getUserNumberInput();
     }
 
     public static List<Integer> inputLottoWinningNumber() {
         try {
-            System.out.println(INPUT_LOTTO_WINNING_NUMBERS_MESSAGE);
+            System.out.println(INPUT_LOTTO_WINNING_NUMBERS_MESSAGE.getMessage());
             List<Integer> winners = getUserNumberListInput();
             int bonusNumber = inputBonusNumber();
 
@@ -50,7 +50,7 @@ public class InputView {
     }
 
     public static int inputBonusNumber() {
-        System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
+        System.out.println(INPUT_BONUS_NUMBER_MESSAGE.getMessage());
         return getUserNumberInput();
     }
 
